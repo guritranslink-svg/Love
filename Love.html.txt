@@ -1,0 +1,133 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Love 💖</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: black; /* changed to black */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.container {
+    background: rgba(255,255,255,0.1);
+    padding: 40px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(255,105,180,0.5);
+    max-width: 400px;
+    position: relative;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background: white;
+    color: black;
+}
+
+#noBtn {
+    background: #444;
+    color: white;
+}
+
+.message {
+    margin-top: 15px;
+    font-size: 1rem;
+}
+
+.broken {
+    font-size: 70px;
+    animation: shake 0.6s ease;
+}
+
+@keyframes shake {
+    0% { transform: rotate(0); }
+    25% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0); }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Hey Love 💕</h1>
+    <p>
+        You are the most beautiful part of my life 🥺💖<br><br>
+        Will you be mine forever? 💍✨
+    </p>
+
+    <button id="yesBtn" onclick="yesClick()">Yes 🥰</button>
+    <button id="noBtn" onclick="noClick()">No 😢</button>
+
+    <div class="message" id="message"></div>
+    <div id="emoji"></div>
+</div>
+
+<script>
+let yesSize = 1;
+let noCount = 0;
+
+function yesClick() {
+    document.body.innerHTML = `
+    <div style="display:flex;justify-content:center;align-items:center;height:100vh;
+    background:black;color:white;text-align:center;">
+        <div>
+            <h1>YAAAAY LOVE!!! 💖💍</h1>
+            <p>You just made me the happiest person alive 🥰</p>
+            <h2>I promise to love you forever 💕</h2>
+        </div>
+    </div>
+    `;
+}
+
+function noClick() {
+    noCount++;
+    yesSize += 0.4;
+    document.getElementById("yesBtn").style.transform = "scale(" + yesSize + ")";
+
+    const message = document.getElementById("message");
+    const emoji = document.getElementById("emoji");
+
+    if(noCount === 1){
+        message.innerHTML = "You're breaking my heart Love 💔";
+        emoji.innerHTML = "<div class='broken'>💔</div>";
+    }
+    else if(noCount === 2){
+        message.innerHTML = "It really hurts... I thought I was special to you 🥺💔";
+        emoji.innerHTML = "<div class='broken'>💔</div>";
+    }
+    else if(noCount >= 3){
+        message.innerHTML = "Okay... I can't handle this anymore 😭";
+        emoji.innerHTML = "<div style='font-size:70px;'>😭</div>";
+    }
+}
+</script>
+
+</body>
+</html>
